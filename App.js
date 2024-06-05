@@ -2,10 +2,17 @@ import React, { useCallback } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { Ionicons } from "@expo/vector-icons";
 import { useAssets } from "expo-asset";
-import { Text, View } from "react-native";
+import { Text, View, useColorScheme } from "react-native";
 import { useFonts } from "expo-font";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  DarkTheme,
+  DefaultTheme,
+} from "@react-navigation/native";
+
+import Root from "./navigation/Root";
 import Tabs from "./navigation/Tabs";
+import Stack from "./navigation/Stack";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -17,6 +24,7 @@ export default function App() {
     if (fontsLoaded && assets) await SplashScreen.hideAsync();
   }, [fontsLoaded, assets]);
 
+  const isDark = useColorScheme() === "dark";
   if (!fontsLoaded || !assets) {
     return null;
   }
@@ -24,8 +32,12 @@ export default function App() {
   return (
     <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <NavigationContainer>
-        <Tabs />
+        <Root />
       </NavigationContainer>
     </View>
   );
+}
+
+{
+  /* theme={isDark ? DarkTheme : DefaultTheme} */
 }
