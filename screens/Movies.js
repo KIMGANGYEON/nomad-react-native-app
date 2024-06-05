@@ -6,7 +6,7 @@ const Movies = ({ navigation: { navigate } }) => (
     onPress={() => navigate("Stack", { screen: "Three" })}
     style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
   >
-    <Text>Movies</Text>
+    <Text>Moviessss</Text>
   </TouchableOpacity>
 );
 export default Movies;
