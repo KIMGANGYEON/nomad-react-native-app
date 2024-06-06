@@ -13,6 +13,8 @@ import {
 import Root from "./navigation/Root";
 import Tabs from "./navigation/Tabs";
 import Stack from "./navigation/Stack";
+import { ThemeProvider } from "styled-components/native";
+import { darkTheme, lightTheme } from "./styled";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -31,9 +33,11 @@ export default function App() {
 
   return (
     <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
-      <NavigationContainer>
-        <Root />
-      </NavigationContainer>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <NavigationContainer>
+          <Root />
+        </NavigationContainer>
+      </ThemeProvider>
     </View>
   );
 }
